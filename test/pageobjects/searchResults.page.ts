@@ -12,6 +12,10 @@ class SearchResultsPage {
     get poolInfo() { return $('//div[contains(text(),"ool")]'); } ////div[@data-section-id="AMENITIES_DEFAULT"]
     get amenitiesShowAll() { return $('//button[contains(text(),"Show all")]'); }
 
+    get mapPinInfo() { return $('//span[contains(text(),"selected")]'); }
+    get titleOfProperty() { return $('(.//div[@data-testid="listing-card-subtitle"])[1]'); }
+    get priceOfFirstProperty() { return $('//div[@role="group"][1]//span[contains(text(),"total")]'); }
+
     // Verify the location
     async verifyLocation(expectedLocation: string) {
         const locationText = await this.locationInfo.getText();

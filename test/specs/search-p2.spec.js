@@ -2,8 +2,8 @@ import HomePage from '../pageobjects/home.page';
 import SearchResultsPage from '../pageobjects/searchResults.page';
 import moment from "moment/moment";
 
-describe('Airbnb Rome search with guests and dates', () => {
-    it('should search Rome, Italy with correct dates and guests', async () => {
+describe('Airbnb Rome search with bedrooms and pools', () => {
+    it('Verify that the results and details page match the extra filters', async () => {
         HomePage.open();
         await browser.pause(5000)
         await HomePage.enterLocation('Rome, Italy');
