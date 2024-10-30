@@ -25,9 +25,6 @@ describe('Airbnb Rome search with guests and dates', () => {
 
         const properties = SearchResultsPage.pageProperties;
         const numberOfProperties = await properties.length;
-        // const nextPage = await SearchResultsPage.Pages;
-
-        // for (let j = 0; j <= 13; j++){
 
             for (let i = 1; i < numberOfProperties; i = i + 2) {
                 // Open each property in a new tab and verify
@@ -41,13 +38,6 @@ describe('Airbnb Rome search with guests and dates', () => {
                 await SearchResultsPage.verifyNoOfBedrooms(5);
                 await SearchResultsPage.verifyPoolAvailability();
 
-                
-                // await SearchResultsPage.verifyGuestCapacity(3);
-
-                // const checkInDate = moment().add(7,'days');
-                // const checkOutDate = moment(checkInDate).add(7, 'days');
-                // await SearchResultsPage.verifyDatePeriod(checkInDate, checkOutDate)
-
                 // Close the current tab
                 await browser.closeWindow();
                 await browser.pause(3000);
@@ -55,10 +45,6 @@ describe('Airbnb Rome search with guests and dates', () => {
                 await browser.switchWindow('https://www.airbnb.com/s/Rome--Italy/');
                 await browser.pause(3000);
             }
-
-        //     await nextPage.click();
-        //     await browser.pause(2000);
-        // }
 
     });
     
