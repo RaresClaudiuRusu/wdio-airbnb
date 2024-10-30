@@ -10,6 +10,12 @@ class HomePage {
     get addChildButton() { return $('(.//button[@aria-label="increase value"])[2]'); }
     get searchButton() { return $('button=Search'); }
 
+    get filters() { return $('button[data-testid="category-bar-filter-button"]'); }
+    get pool() { return $('button[id="filter-item-amenities-7"]'); }
+    get bedrooms() { return $('(.//button[@aria-label="increase value"])[1]'); }
+    get applyFilters() { return $('//a[contains(text(),"Show")]'); }
+    get amenitiesShowMore() { return $('//span[contains(text(),"Show more")]'); }
+
     async open() {
         await browser.url('https://www.airbnb.com/');
     }
@@ -47,6 +53,25 @@ class HomePage {
 
     async clickSearchButton() {
         await this.searchButton.click();
+        await browser.pause(2000);
+    }
+
+    async setExtraFilters(noOfBedrooms: number, withPool: boolean){
+        await this.filters.click();
+        await this.amenitiesShowMore.click();
+        //await browser.maximizeWindow();
+        await browser.pause(2000);
+
+        if (withPool){
+            await this.pool.click();
+        }
+
+        for(let roomIndex = 1; roomIndex <= noOfBedrooms; roomIndex++ ) {
+            await this.bedrooms.click();
+            
+        }
+
+        await this.applyFilters.click();
     }
 }
 
